@@ -31,7 +31,41 @@ three
 
 def fit_to_width(string, limit):
     """Print string within a character limit."""
+    # store current line length
+    # store current line
+    # before it exceeds it, print it and reset
+    #how to handle if it doesn't exceed
+    #how to get the last line
+    str_list = string.split(' ')
+    line_len = 0
+    current_line = ''
+    all_lines = []
+    # if this is the last line
+    char_count = 0
+    for item in str_list:
+        char_count += len(item)
+    
+    
+    if char_count < limit:
+        print(string)
+        return
+    for item in str_list:
+        if len(item) + len(current_line) <= limit:
+            current_line += item + ' '
+        
+        else:
+            if current_line[-1] == ' ':
+                print(current_line[:-1])
 
+            else:
+                print(current_line)
+            current_line = item + ' '
+    # print last row
+    if current_line[-1] == ' ':
+        print(current_line[:-1])
+
+    else:
+        print(current_line)
 
 if __name__ == '__main__':
     import doctest
